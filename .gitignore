@@ -1,0 +1,10 @@
+node_modules
+.vscode
+dist
+.env
+coverage
+tmp/*
+!tmp/.gitkeep
+
+docker-compose.yml
+ormconfig.json
