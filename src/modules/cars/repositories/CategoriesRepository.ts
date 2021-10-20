@@ -3,9 +3,18 @@ import { ICategoriesRepository, ICreateCategoryDTO } from './ICategoriesReposito
 
 class CategoriesRepository implements ICategoriesRepository {
   categories: Category[]
+  private static INSTANCE: CategoriesRepository
 
-  constructor () {
+  // privado, só a classe pode criar uma nova instancia
+  private constructor () {
     this.categories = []
+  }
+
+  public static getInstance (): CategoriesRepository {
+    if (!CategoriesRepository.INSTANCE) {
+      CategoriesRepository.INSTANCE = new CategoriesRepository()
+    }
+    return CategoriesRepository.INSTANCE
   }
 
   create ({ name, description }: ICreateCategoryDTO): void {
